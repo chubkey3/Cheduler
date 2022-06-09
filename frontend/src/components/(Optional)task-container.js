@@ -2,7 +2,6 @@ import React, {useState} from 'react'
 import {Box, Button, Modal, Badge, useDisclosure, Flex, Text, Textarea, Center, Heading, Divider, Input, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, AlertDialog, AlertDialogBody, AlertDialogFooter, AlertDialogHeader, AlertDialogContent, AlertDialogOverlay, RadioGroup, Radio, Editable, EditablePreview, EditableInput} from '@chakra-ui/react'
 import {FaTrashAlt} from 'react-icons/fa';
 import axios from 'axios';
-import {MdEdit} from 'react-icons/md';
 
 export default function TaskContainer(props) {
     const {isOpen, onOpen, onClose} = useDisclosure();
@@ -30,11 +29,11 @@ export default function TaskContainer(props) {
 
     return (
         <>
-        <Box borderWidth={'1px'} borderRadius={'lg'} p={0} m={3}>
+        <Box borderWidth={'1px'} borderRadius={'lg'} p={0} m={3} maxW={'400px'}>
             <Box as={'button'} onClick={onOpen} width={'100%'} h={'100%'} p={5}>
                 <Center>
-                    <Badge colorScheme={'red'} mr={'1'} fontSize={'l'}>{importance}</Badge>
-                    <Heading fontSize={'xl'}>
+                    <Badge colorScheme={'red'} mr={2} fontSize={'l'}>{importance}</Badge>
+                    <Heading fontSize={'2xl'}>
                         {title}
                     </Heading>
                 </Center>
@@ -53,9 +52,7 @@ export default function TaskContainer(props) {
 
             </Box>
 
-            <Flex as='button' bgColor={'red.400'} w={'100%'} justifyContent={'center'} py={1} borderRadius={'full'} onClick={onOpen2}>
-                <FaTrashAlt fontSize={'22px'}/>
-            </Flex>
+            
         
         </Box>
         <Modal isOpen={isOpen} onClose={save} size={'full'} motionPreset={'scale'}>
@@ -95,6 +92,9 @@ export default function TaskContainer(props) {
                     <Input type='date' value={date} onChange={(e) => {setDate(e.target.value)}}>
                         
                     </Input>
+                    <Flex as='button' borderRadius={'full'} onClick={onOpen2} ml={10} mr={3}>
+                        <FaTrashAlt fontSize={'28px'}/>
+                    </Flex>
                 </ModalFooter>
             </ModalContent>
         </Modal>

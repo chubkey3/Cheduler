@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import Navbar from '../components/navbar';
 import axios from 'axios';
 import TaskContainer from '../components/(Optional)task-container';
-import {SimpleGrid, Button, Flex, Stack, Text, Tag, Input, Textarea, TagLabel, Modal,
+import {SimpleGrid, Button, Flex, Stack, Text, Tag, Input, Textarea, TagLabel, Modal, HStack,
     ModalOverlay,
     ModalContent,
     ModalHeader,
@@ -89,32 +89,30 @@ export default function Tasks() {
         <>
             <Navbar active='tasks'></Navbar>
             
-            <Flex flexDir={'column'} alignItems={'center'} ml={[0, 180]}>
+            <Flex flexDir={'column'} alignItems={'center'} ml={[0, 180]} pb={[10, 0]}>
                 <Flex w={'100%'} justifyContent={'center'} alignItems={'center'} textAlign={'center'}>
                     <Text fontSize={'3xl'} mt={10} fontWeight={'bold'} alignSelf={'center'}>Tasks</Text>
                 </Flex>
-                <Flex bgColor={'red'} w={'100%'}>
-                    <Flex position={'absolute'} right={0}>
-                        
-                        <Menu>
-                            <MenuButton as={Button} rightIcon={<ChevronDownIcon/>}>
-                                Sort By
-                            </MenuButton>
-                            <MenuList>
-                                <MenuItem onClick={sortbyimpt}>Importance</MenuItem>
-                                <MenuItem onClick={sortbyalph}>A-Z</MenuItem>
-                                <MenuItem onClick={sortbydate}>Date</MenuItem>
-                            </MenuList>
-                        </Menu>
-                    </Flex>
-                    <Flex position={'absolute'} right={120}>
-                        <Tag onClick={add} cursor={'pointer'} colorScheme={'whatsapp'} pr={0} h={10}>
-                            <TagLabel fontSize={'20px'}>New</TagLabel>
-                            <IoIosAdd fontSize={'30px'}/>
-                        </Tag>
-                    </Flex>
+                <Flex w={'100%'} justifyContent={['center', 'right']} mr={[0, 10]} my={6}>
+                    <HStack >
+                    <Tag onClick={add} cursor={'pointer'} colorScheme={'whatsapp'}h={'100%'}>
+                        <TagLabel fontSize={'20px'}>New</TagLabel>
+                        <IoIosAdd fontSize={'30px'}/>
+                    </Tag>
+
+                    <Menu>
+                        <MenuButton as={Button} rightIcon={<ChevronDownIcon/>}>
+                            Sort By
+                        </MenuButton>
+                        <MenuList>
+                            <MenuItem onClick={sortbyimpt}>Importance</MenuItem>
+                            <MenuItem onClick={sortbyalph}>A-Z</MenuItem>
+                            <MenuItem onClick={sortbydate}>Date</MenuItem>
+                        </MenuList>
+                    </Menu>
+                    </HStack>
                 </Flex>
-                <SimpleGrid columns={[1,2,3]}>{tasks.map((task) => (
+                <SimpleGrid columns={[1,2,3]} w={'90%'}>{tasks.map((task) => (
                     <TaskContainer data={task} key={task.title}></TaskContainer>
                 ))}</SimpleGrid>
                 
