@@ -20,7 +20,7 @@ function Nav(props){
         return (
             <Flex position={'fixed'} left={0}  mb={1} flexDir={'column'}  h={"100%"} pr={10} style={{caretColor: "transparent"}} borderRight={'1px'} borderColor={'gray.200'} boxShadow={'rgba(100, 100, 111, 0.2) 0px 0px 8px 0px'}>
                 <Text fontSize={"2xl"} fontWeight={'bold'} py={5} ml={2}>Cheduler</Text>
-                <Divider color={'black'} opacity={1} mt={3} mb={6} pr={5}/>
+                <Divider color={'black'} opacity={1} mt={3} mb={6} pr={10}/>
                 <Flex h={"30vh"} flexDir={'column'} justifyContent={'space-between'} alignItems={'center'}>
                     <Flex as={RouterLink} to="/dashboard" w={"100%"} alignItems={'center'}>
                         {props.active === 'dashboard' && <Box bgColor={'red.100'} w="95%" h="35px" position={'absolute'} zIndex={"-1"} ml={1} borderRadius={'full'}></Box>}
@@ -48,8 +48,8 @@ function Nav(props){
                         <Text fontSize={"l"}>Account</Text>
                     </Flex>
                 </Flex>
-                <Flex mt={"20vh"} position={'absolute'} bottom={5} flexDir={'column'}>
-                    <Divider color={'black'} opacity={1} mb={6} orientation={'horizontal'} pr={5}/>
+                <Flex mt={"20vh"} position={'absolute'} bottom={5} flexDir={'column'} w={'100%'}>
+                    <Divider color={'black'} opacity={1} mb={6} orientation={'horizontal'}/>
                     <Flex w={"100%"} alignItems={'center'} alignContent={'center'} textAlign={'center'} as={RouterLink} to="/settings" mb={4}>
                         <Flex ml={5} mr={3}><FiSettings fontSize="1.5em"/></Flex>
                         <Text fontSize={"l"}>Settings</Text>
@@ -63,7 +63,7 @@ function Nav(props){
         )
     } else {
         return (
-            <Flex justifyContent={'space-around'} position={'fixed'} bottom={0} w={'100%'} mb={1} bgColor={'white'} borderTop={'1px'} borderColor={'gray.200'} pt={2}>
+            <Flex justifyContent={'space-around'} position={'fixed'} bottom={0} w={'100%'} mb={1} bgColor={'white'} borderTop={'1px'} borderColor={'gray.200'} pt={2} boxShadow={'rgba(100, 100, 111, 0.2) 0px 0px 3px 0px'}>
                  
                     <Link as={RouterLink} to="/dashboard"><AiFillHome fontSize="2em" color={props.active === "dashboard" && "#FED7D7"}/></Link>
                 

@@ -8,7 +8,7 @@ export default function TaskContainer(props) {
     const {isOpen: isOpen2, onOpen: onOpen2, onClose: onClose2} = useDisclosure();
     const [value, setValue] = useState(props.data.description);
     const [title, setTitle] = useState(props.data.title);
-    const [date, setDate] = useState((new Date(props.data.completiondate).getFullYear()) + '-' + ('0' + (new Date(props.data.completiondate).getMonth()+1)).slice(-2) + '-' + ('0' + (new Date(props.data.completiondate).getDate()+1)).slice(-2));
+    const [date, setDate] = useState( (props.data.completiondate !== "") ? ((new Date(props.data.completiondate).getFullYear()) + '-' + ('0' + (new Date(props.data.completiondate).getMonth()+1)).slice(-2) + '-' + ('0' + (new Date(props.data.completiondate).getDate()+1)).slice(-2)) : "");
     const [importance, setImportance] = useState(props.data.importance);
     //when expanded full description is shown plus enlarged in center of screen with blurred background
     //each container is really rounded in a grid with box shadows and a little bit of description showing
@@ -24,7 +24,7 @@ export default function TaskContainer(props) {
 
     const save = () => {
         onClose();
-        axios.patch('http://localhost:3001/tasks', {title: title, description: value, importance: importance, completiondate: date}, {headers: {"access-token": localStorage.getItem('token')}})
+        axios.patch('http://localhost:3001/tasks', {oldtitle: props.data.title, newtitle: title, description: value, importance: importance, completiondate: date}, {headers: {"access-token": localStorage.getItem('token')}})
     }
 
     return (
@@ -66,7 +66,6 @@ export default function TaskContainer(props) {
                         <Radio colorScheme={'facebook'} value={'!!!'} m={3} size={'lg'}>!!!</Radio>
                     </RadioGroup>
                 </Flex>
-
                 <Center>
                     <Heading>
                         <Flex justifyContent={'center'} alignItems={'center'} textAlign={'center'}>

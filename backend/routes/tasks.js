@@ -47,7 +47,7 @@ router.post('/', async (req, res) => {
                     username: username,
                     title: req.body.title,
                     importance: req.body.importance,
-                    description: req.body.description,
+                    description: req.body.description || '',
                     completiondate: req.body.completiondate || ''
                 })
                 
@@ -63,28 +63,29 @@ router.post('/', async (req, res) => {
 })
 
 router.patch('/', async (req, res) => {
+    
     try {
         const username = auth(req.header("access-token"));
         
         if (username){
 
-            const notvalid = await Tasks.findOne({username: username, title: req.body.title})
-            
+            const notvalid = await Tasks.findOne({username: username, title: req.body.newtitle})
             if (notvalid){
-                const task = await Tasks.updateOne({username: username, title: req.body.title}, {$set: {
+                const task = await Tasks.updateOne({username: username, title: req.body.oldtitle}, {$set: {
                     description: req.body.description,
                     importance: req.body.importance,
                     completiondate: req.body.completiondate
                 }})
             }
             else {
-                const task = await Tasks.updateOne({username: username, title: req.body.title}, {$set: {
-                    title: req.body.title,
+                const task = await Tasks.updateOne({username: username, title: req.body.oldtitle}, {$set: {
+                    title: req.body.newtitle,
                     description: req.body.description,
                     importance: req.body.importance,
                     completiondate: req.body.completiondate
                 }})
             }
+            res.sendStatus(200);
         }
     } catch(err){
         console.log(err)
