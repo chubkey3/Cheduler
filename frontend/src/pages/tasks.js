@@ -117,8 +117,8 @@ export default function Tasks() {
                 <Flex w={'100%'} justifyContent={['center', 'right']} mr={[0, 10]} my={6}>
                     <HStack >
                     <Tag onClick={add} cursor={'pointer'} colorScheme={'whatsapp'}h={'100%'}>
-                        <TagLabel fontSize={'20px'}>New</TagLabel>
-                        <IoIosAdd fontSize={'30px'}/>
+                        <TagLabel fontSize={'16px'}>New</TagLabel>
+                        <IoIosAdd fontSize={'24px'}/>
                     </Tag>
 
                     <Menu>
