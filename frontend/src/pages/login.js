@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import axios from 'axios';
-import {Link, useNavigate} from 'react-router-dom';
+import {Link as RouterLink, useNavigate} from 'react-router-dom';
+import {Flex, Box, FormControl, FormLabel, Input, FormHelperText, FormErrorMessage, HStack, VStack, Text, Alert, AlertIcon, AlertTitle, AlertDescription, Link} from '@chakra-ui/react';
 
 function Login(){
     const [username, setUsername] = useState("");
@@ -35,8 +36,29 @@ function Login(){
     }
 
     return(
-        <div className="login-container">
-            <h1>Login</h1>
+        <Flex flexDir={'column'} alignItems={'center'} justifyContent={'center'} w={'100vw'} h={'90vh'}>
+            <Text fontSize={'3xl'} fontWeight={'bold'} mb={10}>Log In</Text>
+            <Box w={['80%', '50%']} p={5} borderRadius={'lg'} maxW={'500px'} boxShadow={'rgba(149, 157, 165, 0.2) 0px 8px 24px'} bgColor={'blue.100'}>
+                <FormControl>
+                    <FormLabel htmlFor={'username'}>Username</FormLabel>
+                    <Input type={'text'} mb={5} value={username} onChange={(e) => {setUsername(e.target.value)}}/>
+                    <FormLabel htmlFor={'password'}>Password</FormLabel>
+                    <Input type={'password'} mb={10} value={password} onChange={(e) => {setPassword(e.target.value)}}/>
+                    <Input type={'submit'} value={'Login'} onClick={handleLogin}/>
+                    <FormHelperText mt={5}>Don't have an account? <Link as={RouterLink} to="/signup" color={'blue.400'}>Sign Up</Link></FormHelperText>
+                    {invalidlogin && <Alert status="error" borderRadius={'lg'} mt={5} size={'50'}><AlertIcon/><AlertDescription>Username and/or password is incorrect.</AlertDescription></Alert>}
+                </FormControl>
+            </Box>
+           
+        </Flex>
+    )
+}
+
+export default Login;
+
+
+/*
+ <h1>Login</h1>
             <form onSubmit={handleLogin}>
                 <label>
                     Username
@@ -50,10 +72,4 @@ function Login(){
             </form>
             {invalidlogin && <div className="invalid-login">Invalid Username and/or Password</div>}
             <Link to="/signup">Sign Up</Link>
-        </div>
-    )
-}
-
-export default Login;
-
-
+*/

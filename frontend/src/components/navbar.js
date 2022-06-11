@@ -63,7 +63,7 @@ function Nav(props){
         )
     } else {
         return (
-            <Flex justifyContent={'space-around'} position={'fixed'} bottom={0} w={'100%'} mb={1} bgColor={'white'} borderTop={'1px'} borderColor={'gray.200'} pt={2} boxShadow={'rgba(100, 100, 111, 0.2) 0px 0px 3px 0px'}>
+            <Flex justifyContent={'space-around'} position={'fixed'} bottom={0} w={'100%'} bgColor={'white'} borderTop={'1px'} borderColor={'gray.200'} pt={2} boxShadow={'rgba(100, 100, 111, 0.2) 0px 0px 3px 0px'}>
                  
                     <Link as={RouterLink} to="/dashboard"><AiFillHome fontSize="2em" color={props.active === "dashboard" && "#FED7D7"}/></Link>
                 

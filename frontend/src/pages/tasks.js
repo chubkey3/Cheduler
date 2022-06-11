@@ -21,6 +21,10 @@ FormControl,
   MenuButton,
   MenuList,
   MenuItem,
+  MenuGroup,
+  MenuDivider,
+  MenuOptionGroup,
+  MenuItemOption,
   useToast} from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 import {IoIosAdd} from 'react-icons/io';
@@ -94,7 +98,10 @@ export default function Tasks() {
 
     const sortbydate = () => {
         const temp = [...tasks];
-        temp.sort(function(a, b){return new Date((b !== "") ? b.completiondate : "1970-01-01") - new Date((a !== "") ? a.completiondate : "1970-01-01")});
+        temp.sort(function(a, b){
+            return new Date((a.completiondate !== "") ? a.completiondate : "1970-01-01") - new Date((b.completiondate !== "") ? b.completiondate : "1970-01-01")
+        
+        });
         temp.reverse();
         setTasks(temp);
         setActiveSort("date");
@@ -116,13 +123,22 @@ export default function Tasks() {
 
                     <Menu>
                         <MenuButton as={Button} rightIcon={<ChevronDownIcon/>}>
-                            Sort By
+                            Filters
                         </MenuButton>
                         <MenuList>
-                            <MenuItem onClick={sortbyimpt} color={activeSort === 'impt' && 'red.500'}>Importance</MenuItem>
-                            <MenuItem onClick={sortbyalph} color={activeSort === 'alph' && 'red.500'}>A-Z</MenuItem>
-                            <MenuItem onClick={sortbydate} color={activeSort === 'date' && 'red.500'}>Date</MenuItem>
+                            <MenuGroup title='Sort'>
+                                <MenuItem onClick={sortbyimpt} color={activeSort === 'impt' && 'red.500'}>Importance</MenuItem>
+                                <MenuItem onClick={sortbyalph} color={activeSort === 'alph' && 'red.500'}>A-Z</MenuItem>
+                                <MenuItem onClick={sortbydate} color={activeSort === 'date' && 'red.500'}>Date</MenuItem>
+                            </MenuGroup>
+                            <MenuGroup title='Include'>
+                                <MenuDivider/>
+                                <MenuOptionGroup>
+                                    <MenuItemOption>Date</MenuItemOption>
+                                </MenuOptionGroup>
+                            </MenuGroup>
                         </MenuList>
+                        
                     </Menu>
                     </HStack>
                 </Flex>
