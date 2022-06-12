@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
-import Navbar from '../components/navbar';
+import Navbar from '../components/Navbar';
 import axios from 'axios';
-import TaskContainer from '../components/task-container';
+import TaskContainer from '../components/Task';
 import {SimpleGrid, Button, Flex, Stack, Text, Tag, Input, Textarea, TagLabel, Modal, HStack,
     ModalOverlay,
     ModalContent,
@@ -115,7 +115,7 @@ export default function Tasks() {
             </Flex>
             <Flex flexDir={'column'} alignItems={'center'} ml={[0, 180]} pb={[10, 0]}>
                 <Flex w={'100%'} justifyContent={['center', 'right']}>
-                    <HStack>
+                    <HStack my={5} mr={[0, 5]}>
                         <Tag onClick={add} cursor={'pointer'} colorScheme={'whatsapp'}h={'100%'}>
                             <TagLabel fontSize={'16px'}>New</TagLabel>
                             <IoIosAdd fontSize={'24px'}/>

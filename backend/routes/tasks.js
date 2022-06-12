@@ -110,6 +110,7 @@ router.delete('/', async(req, res) => {
 })
 
 router.get('/day', async (req, res) => {
+    console.log(req.query.date, req.query.month)
     try {
         const username = auth(req.header("access-token"));
         
@@ -119,6 +120,8 @@ router.get('/day', async (req, res) => {
 
             for (t of task){
                 date = new Date(t.completiondate)
+                console.log("query", req.query.date, req.query.month)
+                console.log("actual", date.getDate(), date.getMonth()+1)
                 if (date.getDate() === Number(req.query.date) && date.getMonth()+1 === Number(req.query.month)){
                     tasksonday.push(t)
                 }
