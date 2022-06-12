@@ -133,6 +133,26 @@ router.get('/day', async (req, res) => {
     }
 })
 
+router.get('/days', async (req, res) => {
+    try {
+        const username = auth(req.header("access-token"));
+
+        if (username){
+            const tasks = await Tasks.find({username: username});
+            tasks.forEach(function(task, index, array) {
+                array[index] = array[index]['completiondate'];
+            })
+            
+            res.json(tasks.filter((task) => task !== ''))
+        } else {
+            res.sendStatus(401)
+        }
+    } catch(err){
+        res.sendStatus(400);
+    }
+})
+
+
 router.get('/task', async (req, res) => {
     try {
         const username = auth(req.header("access-token"));

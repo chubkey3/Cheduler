@@ -19,7 +19,8 @@ function Login(){
 
     const handleLogin = async (e) => {
         e.preventDefault()
-
+        //http://192.168.1.81:3001/login
+        
         axios.post('http://localhost:3001/login', {username: username, password: password})
             .then(res => {
                 navigate('/dashboard')
@@ -27,6 +28,7 @@ function Login(){
                 setInvalidlogin(false);
             })
             .catch(function(error) {
+                alert(error)
                 if (error.response){
                     setInvalidlogin(true);
                 }
@@ -52,8 +54,11 @@ function Login(){
                     <FormLabel htmlFor={'password'}>Password</FormLabel>
                     <InputGroup>
                         <InputLeftElement><RiKeyFill/></InputLeftElement>
-                        <Input type={'password'} mb={10} value={password} onChange={(e) => {setPassword(e.target.value)}} borderColor={'gray.400'}/>
+                        <Input type={'password'}  value={password} onChange={(e) => {setPassword(e.target.value)}} borderColor={'gray.400'}/>
                     </InputGroup>
+                    <Flex justifyContent={'right'}>
+                        <FormHelperText mb={10} color={'blue.400'}><Link>Forgot Password?</Link></FormHelperText>
+                    </Flex>
                     <Input type={'submit'} value={'Login'} backgroundColor={'blue.400'} color={'white'} fontWeight={'500'} _hover={{backgroundColor: "blue.500"}}/>
                     <FormHelperText mt={5}>Don't have an account? <Link as={RouterLink} to="/signup" color={'blue.400'}>Sign Up</Link></FormHelperText>
                     {invalidlogin && <Alert status="error" borderRadius={'lg'} mt={5} size={'50'}><AlertIcon/><AlertDescription>Username and/or password is incorrect.</AlertDescription></Alert>}
