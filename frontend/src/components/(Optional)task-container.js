@@ -15,7 +15,7 @@ export default function TaskContainer(props) {
     //delete button
 
     const del = () => {
-        axios.delete('http://localhost:3001/tasks', {headers: {"access-token": localStorage.getItem('token')}, data: {title: props.data.title}})
+        axios.delete('/tasks', {headers: {"access-token": localStorage.getItem('token')}, data: {title: props.data.title}})
             
         onClose2();
 
@@ -24,7 +24,7 @@ export default function TaskContainer(props) {
 
     const save = () => {
         onClose();
-        axios.patch('http://localhost:3001/tasks', {oldtitle: props.data.title, newtitle: title, description: value, importance: importance, completiondate: date}, {headers: {"access-token": localStorage.getItem('token')}})
+        axios.patch('/tasks', {oldtitle: props.data.title, newtitle: title, description: value, importance: importance, completiondate: date}, {headers: {"access-token": localStorage.getItem('token')}})
     }
 
     return (

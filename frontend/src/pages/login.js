@@ -19,9 +19,8 @@ function Login(){
 
     const handleLogin = async (e) => {
         e.preventDefault()
-        //http://192.168.1.81:3001/login
         
-        axios.post('http://localhost:3001/login', {username: username, password: password})
+        axios.post('/login', {username: username, password: password})
             .then(res => {
                 navigate('/dashboard')
                 localStorage.setItem('token', res.data);

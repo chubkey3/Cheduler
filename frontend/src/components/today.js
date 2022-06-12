@@ -7,7 +7,7 @@ export default function Today() {
 
     useEffect(() => {
         let date = new Date();
-        axios.get('http://localhost:3001/tasks/day', {params: {date: date.getDate()-3, month: date.getMonth()+1}, headers: {
+        axios.get('/tasks/day', {params: {date: date.getDate()-3, month: date.getMonth()+1}, headers: {
             "access-token": localStorage.getItem('token')
         }}) 
             .then((res) => {

@@ -42,7 +42,7 @@ export default function Tasks() {
     const toast = useToast()
 
     useEffect(() => {
-        axios.get('http://localhost:3001/tasks', {
+        axios.get('/tasks', {
             headers: {
                 "access-token": localStorage.getItem('token')
             }
@@ -57,7 +57,7 @@ export default function Tasks() {
     }
 
     const submit = () => {    
-        axios.post('http://localhost:3001/tasks', {
+        axios.post('/tasks', {
             title: title,
             description: description,
             importance: importance,
@@ -114,8 +114,8 @@ export default function Tasks() {
                     <Text fontSize={'4xl'} mt={10} fontWeight={'bold'} alignSelf={'center'}>Tasks</Text>
             </Flex>
             <Flex flexDir={'column'} alignItems={'center'} ml={[0, 180]} pb={[10, 0]}>
-                <Flex w={'100%'} justifyContent={['center', 'right']} mr={[0, 10]} my={6}>
-                    <HStack >
+                <Flex w={'100%'} justifyContent={['center', 'right']} mr={[0, 10]} my={6} textAlign={'right'}>
+                    <HStack>
                     <Tag onClick={add} cursor={'pointer'} colorScheme={'whatsapp'}h={'100%'}>
                         <TagLabel fontSize={'16px'}>New</TagLabel>
                         <IoIosAdd fontSize={'24px'}/>
