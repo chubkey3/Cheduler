@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import axios from 'axios';
 import {Link as RouterLink, useNavigate} from 'react-router-dom';
-import {Flex, Box, FormControl, FormLabel, Input, FormHelperText, FormErrorMessage, HStack, VStack, Text, Alert, AlertIcon, AlertTitle, AlertDescription, Link, InputGroup, InputLeftElement} from '@chakra-ui/react';
+import {Flex, Box, FormControl, FormLabel, Input, FormHelperText, Text, Alert, AlertIcon, AlertDescription, Link, InputGroup, InputLeftElement} from '@chakra-ui/react';
 import {BsFillPersonFill} from 'react-icons/bs';
 import {RiKeyFill} from 'react-icons/ri';
 function Login(){
@@ -71,21 +71,3 @@ function Login(){
 }
 
 export default Login;
-
-
-/*
- <h1>Login</h1>
-            <form onSubmit={handleLogin}>
-                <label>
-                    Username
-                    <input value={username} type="text" onChange={e => setUsername(e.target.value)}/>                    
-                </label>
-                <label>
-                    Password
-                    <input value={password} type="password" onChange={e => setPassword(e.target.value)}/>                    
-                </label>
-                <input value="Login" type="submit"></input>
-            </form>
-            {invalidlogin && <div className="invalid-login">Invalid Username and/or Password</div>}
-            <Link to="/signup">Sign Up</Link>
-*/

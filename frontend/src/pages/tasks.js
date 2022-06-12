@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import Navbar from '../components/navbar';
 import axios from 'axios';
-import TaskContainer from '../components/(Optional)task-container';
+import TaskContainer from '../components/task-container';
 import {SimpleGrid, Button, Flex, Stack, Text, Tag, Input, Textarea, TagLabel, Modal, HStack,
     ModalOverlay,
     ModalContent,
@@ -9,23 +9,23 @@ import {SimpleGrid, Button, Flex, Stack, Text, Tag, Input, Textarea, TagLabel, M
     ModalFooter,
     ModalBody,
     ModalCloseButton,
-useDisclosure,
-Radio,
-RadioGroup,
-Checkbox,
-FormControl,
-  FormLabel,
-  FormErrorMessage,
-  FormHelperText,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  MenuGroup,
-  MenuDivider,
-  MenuOptionGroup,
-  MenuItemOption,
-  useToast} from '@chakra-ui/react';
+    useDisclosure,
+    Radio,
+    RadioGroup,
+    Checkbox,
+    FormControl,
+    FormLabel,
+    FormErrorMessage,
+    FormHelperText,
+    Menu,
+    MenuButton,
+    MenuList,
+    MenuItem,
+    MenuGroup,
+    MenuDivider,
+    MenuOptionGroup,
+    MenuItemOption,
+    useToast} from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 import {IoIosAdd} from 'react-icons/io';
 
@@ -114,32 +114,32 @@ export default function Tasks() {
                     <Text fontSize={'4xl'} mt={10} fontWeight={'bold'} alignSelf={'center'}>Tasks</Text>
             </Flex>
             <Flex flexDir={'column'} alignItems={'center'} ml={[0, 180]} pb={[10, 0]}>
-                <Flex w={'100%'} justifyContent={['center', 'right']} mr={[0, 10]} my={6} textAlign={'right'}>
+                <Flex w={'100%'} justifyContent={['center', 'right']}>
                     <HStack>
-                    <Tag onClick={add} cursor={'pointer'} colorScheme={'whatsapp'}h={'100%'}>
-                        <TagLabel fontSize={'16px'}>New</TagLabel>
-                        <IoIosAdd fontSize={'24px'}/>
-                    </Tag>
+                        <Tag onClick={add} cursor={'pointer'} colorScheme={'whatsapp'}h={'100%'}>
+                            <TagLabel fontSize={'16px'}>New</TagLabel>
+                            <IoIosAdd fontSize={'24px'}/>
+                        </Tag>
 
-                    <Menu>
-                        <MenuButton as={Button} rightIcon={<ChevronDownIcon/>}>
-                            Filters
-                        </MenuButton>
-                        <MenuList>
-                            <MenuGroup title='Sort'>
-                                <MenuItem onClick={sortbyimpt} color={activeSort === 'impt' && 'red.500'}>Importance</MenuItem>
-                                <MenuItem onClick={sortbyalph} color={activeSort === 'alph' && 'red.500'}>A-Z</MenuItem>
-                                <MenuItem onClick={sortbydate} color={activeSort === 'date' && 'red.500'}>Date</MenuItem>
-                            </MenuGroup>
-                            <MenuGroup title='Include'>
-                                <MenuDivider/>
-                                <MenuOptionGroup>
-                                    <MenuItemOption>Date</MenuItemOption>
-                                </MenuOptionGroup>
-                            </MenuGroup>
-                        </MenuList>
-                        
-                    </Menu>
+                        <Menu>
+                            <MenuButton as={Button} rightIcon={<ChevronDownIcon/>}>
+                                Filters
+                            </MenuButton>
+                            <MenuList>
+                                <MenuGroup title='Sort'>
+                                    <MenuItem onClick={sortbyimpt} color={activeSort === 'impt' && 'red.500'}>Importance</MenuItem>
+                                    <MenuItem onClick={sortbyalph} color={activeSort === 'alph' && 'red.500'}>A-Z</MenuItem>
+                                    <MenuItem onClick={sortbydate} color={activeSort === 'date' && 'red.500'}>Date</MenuItem>
+                                </MenuGroup>
+                                <MenuGroup title='Include'>
+                                    <MenuDivider/>
+                                    <MenuOptionGroup>
+                                        <MenuItemOption>Date</MenuItemOption>
+                                    </MenuOptionGroup>
+                                </MenuGroup>
+                            </MenuList>
+                            
+                        </Menu>
                     </HStack>
                 </Flex>
                 <SimpleGrid columns={[1,2,3]} w={'90%'}>{tasks.map((task) => (
@@ -147,9 +147,6 @@ export default function Tasks() {
                 ))}</SimpleGrid>
                 
             </Flex>
-
-
-
 
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
@@ -187,11 +184,9 @@ export default function Tasks() {
                             <FormLabel mt={5}>
                                 <Checkbox isChecked={isDate} onChange={(e) => toggleDate(e.target.checked)}>Date?</Checkbox>
                                 {isDate && <Input type='date' onChange={(e) => {setDate(e.target.value)}} value={date}></Input>}
-                            </FormLabel>
-                            
+                            </FormLabel>       
                         </FormControl>
                     </ModalBody>
-
                     <ModalFooter>
                         <Button colorScheme={'facebook'} onClick={submit}>Add</Button>
                     </ModalFooter>

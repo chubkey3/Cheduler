@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
 import Navbar from '../components/navbar';
-import Today from '../components/today';
 
 function Dashboard(){
     const [token, setToken] = useState("")
@@ -20,10 +19,9 @@ function Dashboard(){
     console.log(token);
 
     return (
-        <div className='dashboard'>
+        <>
             <Navbar active='dashboard'></Navbar>
-            <Today></Today>
-        </div>
+        </>
     )
 }
 

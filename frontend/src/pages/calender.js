@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Navbar from '../components/navbar';
 import {Link as RouterLink} from 'react-router-dom';
 import Calendar from 'react-calendar';
-import { Badge, Heading, Center, Flex, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Text, useDisclosure, Divider, Box, VStack, Link } from '@chakra-ui/react';
-//import 'react-calendar/dist/Calendar.css';
+import { Badge, Heading, Center, Flex, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, Text, useDisclosure, Divider, Box, VStack, Link } from '@chakra-ui/react';
 import '../styles/Calendar.css';
 import axios from 'axios';
 
@@ -84,7 +83,6 @@ export default function Calender() {
             </VStack>
           </ModalBody>
           <ModalFooter>
-
           </ModalFooter>
         </ModalContent>
 

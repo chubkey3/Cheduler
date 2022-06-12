@@ -81,12 +81,10 @@ function Nav(props){
 }
 
 function Navbar(props){
-    const [mobile] = useMediaQuery('(min-width: 400px)')
-    console.log(mobile);
-    return (
-        
+    const [mobile] = useMediaQuery('(min-width: 480px)')
+
+    return (    
         <Nav mobile={mobile} active={props.active}></Nav>
-        
     )
 }
 
