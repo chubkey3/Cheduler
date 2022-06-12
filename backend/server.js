@@ -4,6 +4,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 
 const app = express();
+const PORT = process.env.PORT || 3001;
 
 const tasksRoute = require('./routes/tasks')
 const loginRoute = require('./routes/login')
@@ -29,6 +30,10 @@ app.use('/notes', notesRoute)
 
 //tasks could be the general list and calender is just a visualizer???
 
-mongoose.connect('mongodb+srv://Chubkey:booman3000@images.v2rim.mongodb.net/?retryWrites=true&w=majority');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://Chubkey:booman3000@images.v2rim.mongodb.net/?retryWrites=true&w=majority');
 
-app.listen(3001);
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('client/build'));
+}
+
+app.listen(PORT);
