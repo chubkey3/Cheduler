@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.17b671ef.css",
+    "main.js": "/static/js/main.db89d920.js",
+    "static/js/787.89eaf1e5.chunk.js": "/static/js/787.89eaf1e5.chunk.js",
+    "static/media/chubkeyicon.jpeg": "/static/media/chubkeyicon.5660be0db159477a4632.jpeg",
+    "index.html": "/index.html",
+    "main.17b671ef.css.map": "/static/css/main.17b671ef.css.map",
+    "main.db89d920.js.map": "/static/js/main.db89d920.js.map",
+    "787.89eaf1e5.chunk.js.map": "/static/js/787.89eaf1e5.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.17b671ef.css",
+    "static/js/main.db89d920.js"
+  ]
+}
