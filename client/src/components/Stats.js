@@ -13,7 +13,7 @@ export default function Stats() {
     const [today, setToday] = useState(0);
     
     useEffect(() => {
-        axios.get('/tasks', {
+        axios.get('/api/tasks', {
             headers: {
                 "access-token": localStorage.getItem('token')
             }

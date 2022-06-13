@@ -11,7 +11,7 @@ export default function Calender() {
   const [data, setData] = useState([]);
     
   useEffect(() => {
-    axios.get('/tasks/days', {
+    axios.get('/api/tasks/days', {
       headers: {
           "access-token": localStorage.getItem('token')
       }})
@@ -21,7 +21,7 @@ export default function Calender() {
   }, []);
 
   const fetch = (e) => {
-    axios.get('/tasks/day', {params: {date: e.getDate()-1, month: e.getMonth()+1}, headers: {
+    axios.get('/api/tasks/day', {params: {date: e.getDate()-1, month: e.getMonth()+1}, headers: {
       "access-token": localStorage.getItem('token')
     }})
     .then(res => {

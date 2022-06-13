@@ -17,14 +17,14 @@ const notesRoute = require('./routes/notes')
 app.use(cors());
 app.use(bodyParser.json());
 
-app.get('/', (req, res) => {
+app.get('/api', (req, res) => {
     res.send('hi');
 })
 
 //app.use('/calender', dataRoute) //calender data
-app.use('/tasks', tasksRoute) //list of tasks and information about each one
-app.use('/login', loginRoute)
-app.use('/signup', signupRoute)
+app.use('/api/tasks', tasksRoute) //list of tasks and information about each one
+app.use('/api/login', loginRoute)
+app.use('/api/signup', signupRoute)
 
 app.use('/notes', notesRoute)
 
@@ -44,3 +44,5 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.listen(PORT);
+
+console.log(PORT);

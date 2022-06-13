@@ -8,7 +8,7 @@ export default function Tasks() {
     const [activeSort, setActiveSort] = useState("");
 
     useEffect(() => {
-        axios.get('/tasks', {
+        axios.get('/api/tasks', {
             headers: {
                 "access-token": localStorage.getItem('token')
             }

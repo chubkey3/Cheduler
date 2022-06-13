@@ -23,9 +23,9 @@ function Login(){
     const handleSignUp = async (e) => {
         e.preventDefault()
 
-        axios.post('/signup', {username: username, password: password})
+        axios.post('/api/signup', {username: username, password: password})
             .then(res => {
-                axios.post('/login', {username: username, password: password})
+                axios.post('/api/login', {username: username, password: password})
                     .then(res => {
                         navigate('/dashboard')
                         localStorage.setItem('token', res.data);

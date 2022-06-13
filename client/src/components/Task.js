@@ -12,7 +12,7 @@ export default function TaskContainer(props) {
     const [importance, setImportance] = useState(props.data.importance);
 
     const del = () => {
-        axios.delete('/tasks', {headers: {"access-token": localStorage.getItem('token')}, data: {title: props.data.title}})
+        axios.delete('/api/tasks', {headers: {"access-token": localStorage.getItem('token')}, data: {title: props.data.title}})
             
         onClose2();
 
@@ -21,7 +21,7 @@ export default function TaskContainer(props) {
 
     const save = () => {
         onClose();
-        axios.patch('/tasks', {oldtitle: props.data.title, newtitle: title, description: value, importance: importance, completiondate: date}, {headers: {"access-token": localStorage.getItem('token')}})
+        axios.patch('/api/tasks', {oldtitle: props.data.title, newtitle: title, description: value, importance: importance, completiondate: date}, {headers: {"access-token": localStorage.getItem('token')}})
     }
 
     return (

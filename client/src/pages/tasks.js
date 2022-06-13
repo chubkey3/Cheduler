@@ -42,7 +42,7 @@ export default function Tasks() {
     const toast = useToast()
 
     useEffect(() => {
-        axios.get('/tasks', {
+        axios.get('/api/tasks', {
             headers: {
                 "access-token": localStorage.getItem('token')
             }
@@ -57,7 +57,7 @@ export default function Tasks() {
     }
 
     const submit = () => {    
-        axios.post('/tasks', {
+        axios.post('/api/tasks', {
             title: title,
             description: description,
             importance: importance,

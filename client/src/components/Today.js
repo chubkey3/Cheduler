@@ -6,7 +6,7 @@ export default function Today() {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        axios.get('/tasks/day', {
+        axios.get('/api/tasks/day', {
             params: {
                 date: new Date().getDate()-1, //-1 
                 month: new Date().getMonth()+1
